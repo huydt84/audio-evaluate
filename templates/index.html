@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khảo sát</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Khảo sát chất lượng âm thanh</h1>
+    <form action="{{ url_for('submit') }}" method="POST">
+    <!-- First Audio and Question -->
+    <div>
+        <h2>Audio 1</h2>
+        <audio controls>
+            <source src="../static/nam-bac/nam_bac_2.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <h2>Audio 2</h2>
+        <audio controls>
+            <source src="../static/nam-bac/nam_bac_2.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p><strong>Đánh giá cho điểm Audio 1:</strong></p>
+
+            <input type="radio" id="gt_nam_bac1" name="gt_nam_bac" value="1" required>
+            <label for="q1a">1: Âm thanh không rõ ràng, vô nghĩa</label><br>
+            <input type="radio" id="gt_nam_bac2" name="gt_nam_bac" value="2">
+            <label for="q1b">2: Có giọng đọc nhưng khó nghe nội dung</label><br>
+            <input type="radio" id="gt_nam_bac3" name="gt_nam_bac" value="3">
+            <label for="q1c">3: Có hiểu cơ bản nội dung nhưng nhiều chỗ đọc sai</label><br>
+            <input type="radio" id="gt_nam_bac4" name="gt_nam_bac" value="4">
+            <label for="q1d">4: Âm thanh ít sai/không sai nội dung nhưng chưa đủ tự nhiên</label><br>
+            <input type="radio" id="gt_nam_bac5" name="gt_nam_bac" value="5">
+            <label for="q1e">5: Âm thanh không sai nội dung, giọng đọc tự nhiên</label><br>
+
+        <p><strong>Đánh giá cho điểm Audio 2:</strong></p>
+
+            <input type="radio" id="gen_nam_bac1" name="gen_nam_bac" value="1" required>
+            <label for="q1a">1: Âm thanh không rõ ràng, vô nghĩa</label><br>
+            <input type="radio" id="gen_nam_bac2" name="gen_nam_bac" value="2">
+            <label for="q1b">2: Có giọng đọc nhưng khó nghe nội dung</label><br>
+            <input type="radio" id="gen_nam_bac3" name="gen_nam_bac" value="3">
+            <label for="q1c">3: Có hiểu cơ bản nội dung nhưng nhiều chỗ đọc sai</label><br>
+            <input type="radio" id="gen_nam_bac4" name="gen_nam_bac" value="4">
+            <label for="q1d">4: Âm thanh ít sai/không sai nội dung nhưng chưa đủ tự nhiên</label><br>
+            <input type="radio" id="gen_nam_bac5" name="gen_nam_bac" value="5">
+            <label for="q1e">5: Âm thanh không sai nội dung, giọng đọc tự nhiên</label><br>
+
+        <p><strong>Đánh giá cho điểm tương đồng ngữ điệu giữa Audio 1 và Audio 2:</strong></p>
+
+            <input type="radio" id="ex_nam_bac1" name="ex_nam_bac" value="1" required>
+            <label for="q1a">1. <strong>Rất không tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh hoàn toàn khác nhau. Không có bất kỳ điểm nào giống nhau về âm điệu, tốc độ, cường độ, hoặc cách nhấn mạnh từ.</label><br>
+            <input type="radio" id="ex_nam_bac2" name="ex_nam_bac" value="2">
+            <label for="q1b">2. <strong>Không tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh khá khác nhau. Có một vài điểm giống nhau nhưng nhìn chung vẫn có nhiều khác biệt về cách phát âm, tốc độ và nhấn mạnh từ.</label><br>
+            <input type="radio" id="ex_nam_bac3" name="ex_nam_bac" value="3">
+            <label for="q1c">3. <strong>Tương đồng vừa phải</strong> Ngữ điệu của hai đoạn âm thanh có một số điểm tương đồng nhất định. Cả hai có một số phần giống nhau về âm điệu, tốc độ hoặc cách nhấn mạnh từ, nhưng vẫn có những khác biệt rõ ràng.</label><br>
+            <input type="radio" id="ex_nam_bac4" name="ex_nam_bac" value="4">
+            <label for="q1d">4. <strong>Khá tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh khá giống nhau. Phần lớn các đặc điểm về âm điệu, tốc độ và cách nhấn mạnh từ tương tự nhau, chỉ có một vài điểm nhỏ khác biệt.</label><br>
+            <input type="radio" id="ex_nam_bac5" name="ex_nam_bac" value="5">
+            <label for="q1e">5. <strong>Rất tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh gần như giống nhau hoàn toàn. Mọi đặc điểm về âm điệu, tốc độ và cách nhấn mạnh từ đều tương tự nhau.</label><br>
+
+    </div>
+
+    <!-- Second Audio and Question -->
+    <div>
+        <h2>Audio 3</h2>
+        <audio controls>
+            <source src="../static/nam-nam/nam_nam_4.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <h2>Audio 4</h2>
+        <audio controls>
+            <source src="../static/nam-nam/nam_nam_4.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p><strong>Đánh giá cho điểm Audio 3:</strong></p>
+
+            <input type="radio" id="gt_nam_nam1" name="gt_nam_nam" value="1" required>
+            <label for="q1a">1: Âm thanh không rõ ràng, vô nghĩa</label><br>
+            <input type="radio" id="gt_nam_nam2" name="gt_nam_nam" value="2">
+            <label for="q1b">2: Có giọng đọc nhưng khó nghe nội dung</label><br>
+            <input type="radio" id="gt_nam_nam3" name="gt_nam_nam" value="3">
+            <label for="q1c">3: Có hiểu cơ bản nội dung nhưng nhiều chỗ đọc sai</label><br>
+            <input type="radio" id="gt_nam_nam4" name="gt_nam_nam" value="4">
+            <label for="q1d">4: Âm thanh ít sai/không sai nội dung nhưng chưa đủ tự nhiên</label><br>
+            <input type="radio" id="gt_nam_nam5" name="gt_nam_nam" value="5">
+            <label for="q1e">5: Âm thanh không sai nội dung, giọng đọc tự nhiên</label><br>
+
+        <p><strong>Đánh giá cho điểm Audio 4:</strong></p>
+
+            <input type="radio" id="gen_nam_nam1" name="gen_nam_nam" value="1" required>
+            <label for="q1a">1: Âm thanh không rõ ràng, vô nghĩa</label><br>
+            <input type="radio" id="gen_nam_nam2" name="gen_nam_nam" value="2">
+            <label for="q1b">2: Có giọng đọc nhưng khó nghe nội dung</label><br>
+            <input type="radio" id="gen_nam_nam3" name="gen_nam_nam" value="3">
+            <label for="q1c">3: Có hiểu cơ bản nội dung nhưng nhiều chỗ đọc sai</label><br>
+            <input type="radio" id="gen_nam_nam4" name="gen_nam_nam" value="4">
+            <label for="q1d">4: Âm thanh ít sai/không sai nội dung nhưng chưa đủ tự nhiên</label><br>
+            <input type="radio" id="gen_nam_nam5" name="gen_nam_nam" value="5">
+            <label for="q1e">5: Âm thanh không sai nội dung, giọng đọc tự nhiên</label><br>
+
+        <p><strong>Đánh giá cho điểm tương đồng ngữ điệu giữa Audio 3 và Audio 4:</strong></p>
+            <input type="radio" id="ex_nam_nam1" name="ex_nam_nam" value="1" required>
+            <label for="q1a">1. <strong>Rất không tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh hoàn toàn khác nhau. Không có bất kỳ điểm nào giống nhau về âm điệu, tốc độ, cường độ, hoặc cách nhấn mạnh từ.</label><br>
+            <input type="radio" id="ex_nam_nam2" name="ex_nam_nam" value="2">
+            <label for="q1b">2. <strong>Không tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh khá khác nhau. Có một vài điểm giống nhau nhưng nhìn chung vẫn có nhiều khác biệt về cách phát âm, tốc độ và nhấn mạnh từ.</label><br>
+            <input type="radio" id="ex_nam_nam3" name="ex_nam_nam" value="3">
+            <label for="q1c">3. <strong>Tương đồng vừa phải</strong> Ngữ điệu của hai đoạn âm thanh có một số điểm tương đồng nhất định. Cả hai có một số phần giống nhau về âm điệu, tốc độ hoặc cách nhấn mạnh từ, nhưng vẫn có những khác biệt rõ ràng.</label><br>
+            <input type="radio" id="ex_nam_nam4" name="ex_nam_nam" value="4">
+            <label for="q1d">4. <strong>Khá tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh khá giống nhau. Phần lớn các đặc điểm về âm điệu, tốc độ và cách nhấn mạnh từ tương tự nhau, chỉ có một vài điểm nhỏ khác biệt.</label><br>
+            <input type="radio" id="ex_nam_nam5" name="ex_nam_nam" value="5">
+            <label for="q1e">5. <strong>Rất tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh gần như giống nhau hoàn toàn. Mọi đặc điểm về âm điệu, tốc độ và cách nhấn mạnh từ đều tương tự nhau.</label><br>
+    </div>
+
+    <!-- Third Audio and Question -->
+    <div>
+        <h2>Audio 5</h2>
+        <audio controls>
+            <source src="../static/nu-bac/nu_bac_159.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <h2>Audio 6</h2>
+        <audio controls>
+            <source src="../static/nu-bac/nu_bac_159.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p><strong>Đánh giá cho điểm Audio 5:</strong></p>
+
+            <input type="radio" id="gt_nu_bac1" name="gt_nu_bac" value="1" required>
+            <label for="q1a">1: Âm thanh không rõ ràng, vô nghĩa</label><br>
+            <input type="radio" id="gt_nu_bac2" name="gt_nu_bac" value="2">
+            <label for="q1b">2: Có giọng đọc nhưng khó nghe nội dung</label><br>
+            <input type="radio" id="gt_nu_bac3" name="gt_nu_bac" value="3">
+            <label for="q1c">3: Có hiểu cơ bản nội dung nhưng nhiều chỗ đọc sai</label><br>
+            <input type="radio" id="gt_nu_bac4" name="gt_nu_bac" value="4">
+            <label for="q1d">4: Âm thanh ít sai/không sai nội dung nhưng chưa đủ tự nhiên</label><br>
+            <input type="radio" id="gt_nu_bac5" name="gt_nu_bac" value="5">
+            <label for="q1e">5: Âm thanh không sai nội dung, giọng đọc tự nhiên</label><br>
+
+        <p><strong>Đánh giá cho điểm Audio 6:</strong></p>
+
+            <input type="radio" id="gen_nu_bac1" name="gen_nu_bac" value="1" required>
+            <label for="q1a">1: Âm thanh không rõ ràng, vô nghĩa</label><br>
+            <input type="radio" id="gen_nu_bac2" name="gen_nu_bac" value="2">
+            <label for="q1b">2: Có giọng đọc nhưng khó nghe nội dung</label><br>
+            <input type="radio" id="gen_nu_bac3" name="gen_nu_bac" value="3">
+            <label for="q1c">3: Có hiểu cơ bản nội dung nhưng nhiều chỗ đọc sai</label><br>
+            <input type="radio" id="gen_nu_bac4" name="gen_nu_bac" value="4">
+            <label for="q1d">4: Âm thanh ít sai/không sai nội dung nhưng chưa đủ tự nhiên</label><br>
+            <input type="radio" id="gen_nu_bac5" name="gen_nu_bac" value="5">
+            <label for="q1e">5: Âm thanh không sai nội dung, giọng đọc tự nhiên</label><br>
+
+        <p><strong>Đánh giá cho điểm tương đồng ngữ điệu giữa Audio 5 và Audio 6:</strong></p>
+            <input type="radio" id="ex_nu_bac1" name="ex_nu_bac" value="1" required>
+            <label for="q1a">1. <strong>Rất không tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh hoàn toàn khác nhau. Không có bất kỳ điểm nào giống nhau về âm điệu, tốc độ, cường độ, hoặc cách nhấn mạnh từ.</label><br>
+            <input type="radio" id="ex_nu_bac2" name="ex_nu_bac" value="2">
+            <label for="q1b">2. <strong>Không tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh khá khác nhau. Có một vài điểm giống nhau nhưng nhìn chung vẫn có nhiều khác biệt về cách phát âm, tốc độ và nhấn mạnh từ.</label><br>
+            <input type="radio" id="ex_nu_bac3" name="ex_nu_bac" value="3">
+            <label for="q1c">3. <strong>Tương đồng vừa phải</strong> Ngữ điệu của hai đoạn âm thanh có một số điểm tương đồng nhất định. Cả hai có một số phần giống nhau về âm điệu, tốc độ hoặc cách nhấn mạnh từ, nhưng vẫn có những khác biệt rõ ràng.</label><br>
+            <input type="radio" id="ex_nu_bac4" name="ex_nu_bac" value="4">
+            <label for="q1d">4. <strong>Khá tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh khá giống nhau. Phần lớn các đặc điểm về âm điệu, tốc độ và cách nhấn mạnh từ tương tự nhau, chỉ có một vài điểm nhỏ khác biệt.</label><br>
+            <input type="radio" id="ex_nu_bac5" name="ex_nu_bac" value="5">
+            <label for="q1e">5. <strong>Rất tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh gần như giống nhau hoàn toàn. Mọi đặc điểm về âm điệu, tốc độ và cách nhấn mạnh từ đều tương tự nhau.</label><br>
+    </div>
+
+    <!-- Forth Audio and Question -->
+    <div>
+        <h2>Audio 7</h2>
+        <audio controls>
+            <source src="../static/nu-nam/nu_nam2_70.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <h2>Audio 8</h2>
+        <audio controls>
+            <source src="../static/nu-nam/nu_nam2_70.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p><strong>Đánh giá cho điểm Audio 7:</strong></p>
+
+            <input type="radio" id="gt_nu_nam1" name="gt_nu_nam" value="1" required>
+            <label for="q1a">1: Âm thanh không rõ ràng, vô nghĩa</label><br>
+            <input type="radio" id="gt_nu_nam2" name="gt_nu_nam" value="2">
+            <label for="q1b">2: Có giọng đọc nhưng khó nghe nội dung</label><br>
+            <input type="radio" id="gt_nu_nam3" name="gt_nu_nam" value="3">
+            <label for="q1c">3: Có hiểu cơ bản nội dung nhưng nhiều chỗ đọc sai</label><br>
+            <input type="radio" id="gt_nu_nam4" name="gt_nu_nam" value="4">
+            <label for="q1d">4: Âm thanh ít sai/không sai nội dung nhưng chưa đủ tự nhiên</label><br>
+            <input type="radio" id="gt_nu_nam5" name="gt_nu_nam" value="5">
+            <label for="q1e">5: Âm thanh không sai nội dung, giọng đọc tự nhiên</label><br>
+
+        <p><strong>Đánh giá cho điểm Audio 8:</strong></p>
+
+            <input type="radio" id="gen_nu_nam1" name="gen_nu_nam" value="1" required>
+            <label for="q1a">1: Âm thanh không rõ ràng, vô nghĩa</label><br>
+            <input type="radio" id="gen_nu_nam2" name="gen_nu_nam" value="2">
+            <label for="q1b">2: Có giọng đọc nhưng khó nghe nội dung</label><br>
+            <input type="radio" id="gen_nu_nam3" name="gen_nu_nam" value="3">
+            <label for="q1c">3: Có hiểu cơ bản nội dung nhưng nhiều chỗ đọc sai</label><br>
+            <input type="radio" id="gen_nu_nam4" name="gen_nu_nam" value="4">
+            <label for="q1d">4: Âm thanh ít sai/không sai nội dung nhưng chưa đủ tự nhiên</label><br>
+            <input type="radio" id="gen_nu_nam5" name="gen_nu_nam" value="5">
+            <label for="q1e">5: Âm thanh không sai nội dung, giọng đọc tự nhiên</label><br>
+
+        <p><strong>Đánh giá cho điểm tương đồng ngữ điệu giữa Audio 7 và Audio 8:</strong></p>
+            <input type="radio" id="ex_nu_nam1" name="ex_nu_nam" value="1" required>
+            <label for="q1a">1. <strong>Rất không tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh hoàn toàn khác nhau. Không có bất kỳ điểm nào giống nhau về âm điệu, tốc độ, cường độ, hoặc cách nhấn mạnh từ.</label><br>
+            <input type="radio" id="ex_nu_nam2" name="ex_nu_nam" value="2">
+            <label for="q1b">2. <strong>Không tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh khá khác nhau. Có một vài điểm giống nhau nhưng nhìn chung vẫn có nhiều khác biệt về cách phát âm, tốc độ và nhấn mạnh từ.</label><br>
+            <input type="radio" id="ex_nu_nam3" name="ex_nu_nam" value="3">
+            <label for="q1c">3. <strong>Tương đồng vừa phải</strong> Ngữ điệu của hai đoạn âm thanh có một số điểm tương đồng nhất định. Cả hai có một số phần giống nhau về âm điệu, tốc độ hoặc cách nhấn mạnh từ, nhưng vẫn có những khác biệt rõ ràng.</label><br>
+            <input type="radio" id="ex_nu_nam4" name="ex_nu_nam" value="4">
+            <label for="q1d">4. <strong>Khá tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh khá giống nhau. Phần lớn các đặc điểm về âm điệu, tốc độ và cách nhấn mạnh từ tương tự nhau, chỉ có một vài điểm nhỏ khác biệt.</label><br>
+            <input type="radio" id="ex_nu_nam5" name="ex_nu_nam" value="5">
+            <label for="q1e">5. <strong>Rất tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh gần như giống nhau hoàn toàn. Mọi đặc điểm về âm điệu, tốc độ và cách nhấn mạnh từ đều tương tự nhau.</label><br>
+    </div>
+
+    <!-- Fifth Audio and Question -->
+    <div>
+        <h2>Audio 9</h2>
+        <audio controls>
+            <source src="../static/nu-trung/nu_trung1_14.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <h2>Audio 10</h2>
+        <audio controls>
+            <source src="../static/nu-trung/nu_trung1_14.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p><strong>Đánh giá cho điểm Audio 9:</strong></p>
+
+            <input type="radio" id="gt_nu_trung1" name="gt_nu_trung" value="1" required>
+            <label for="q1a">1: Âm thanh không rõ ràng, vô nghĩa</label><br>
+            <input type="radio" id="gt_nu_trung2" name="gt_nu_trung" value="2">
+            <label for="q1b">2: Có giọng đọc nhưng khó nghe nội dung</label><br>
+            <input type="radio" id="gt_nu_trung3" name="gt_nu_trung" value="3">
+            <label for="q1c">3: Có hiểu cơ bản nội dung nhưng nhiều chỗ đọc sai</label><br>
+            <input type="radio" id="gt_nu_trung4" name="gt_nu_trung" value="4">
+            <label for="q1d">4: Âm thanh ít sai/không sai nội dung nhưng chưa đủ tự nhiên</label><br>
+            <input type="radio" id="gt_nu_trung5" name="gt_nu_trung" value="5">
+            <label for="q1e">5: Âm thanh không sai nội dung, giọng đọc tự nhiên</label><br>
+
+        <p><strong>Đánh giá cho điểm Audio 10:</strong></p>
+
+            <input type="radio" id="gen_nu_trung1" name="gen_nu_trung" value="1" required>
+            <label for="q1a">1: Âm thanh không rõ ràng, vô nghĩa</label><br>
+            <input type="radio" id="gen_nu_trung2" name="gen_nu_trung" value="2">
+            <label for="q1b">2: Có giọng đọc nhưng khó nghe nội dung</label><br>
+            <input type="radio" id="gen_nu_trung3" name="gen_nu_trung" value="3">
+            <label for="q1c">3: Có hiểu cơ bản nội dung nhưng nhiều chỗ đọc sai</label><br>
+            <input type="radio" id="gen_nu_trung4" name="gen_nu_trung" value="4">
+            <label for="q1d">4: Âm thanh ít sai/không sai nội dung nhưng chưa đủ tự nhiên</label><br>
+            <input type="radio" id="gen_nu_trung5" name="gen_nu_trung" value="5">
+            <label for="q1e">5: Âm thanh không sai nội dung, giọng đọc tự nhiên</label><br>
+
+        <p><strong>Đánh giá cho điểm tương đồng ngữ điệu giữa Audio 9 và Audio 10:</strong></p>
+            <input type="radio" id="ex_nu_trung1" name="ex_nu_trung" value="1" required>
+            <label for="q1a">1. <strong>Rất không tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh hoàn toàn khác nhau. Không có bất kỳ điểm nào giống nhau về âm điệu, tốc độ, cường độ, hoặc cách nhấn mạnh từ.</label><br>
+            <input type="radio" id="ex_nu_trung2" name="ex_nu_trung" value="2">
+            <label for="q1b">2. <strong>Không tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh khá khác nhau. Có một vài điểm giống nhau nhưng nhìn chung vẫn có nhiều khác biệt về cách phát âm, tốc độ và nhấn mạnh từ.</label><br>
+            <input type="radio" id="ex_nu_trung3" name="ex_nu_trung" value="3">
+            <label for="q1c">3. <strong>Tương đồng vừa phải</strong> Ngữ điệu của hai đoạn âm thanh có một số điểm tương đồng nhất định. Cả hai có một số phần giống nhau về âm điệu, tốc độ hoặc cách nhấn mạnh từ, nhưng vẫn có những khác biệt rõ ràng.</label><br>
+            <input type="radio" id="ex_nu_trung4" name="ex_nu_trung" value="4">
+            <label for="q1d">4. <strong>Khá tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh khá giống nhau. Phần lớn các đặc điểm về âm điệu, tốc độ và cách nhấn mạnh từ tương tự nhau, chỉ có một vài điểm nhỏ khác biệt.</label><br>
+            <input type="radio" id="ex_nu_trung5" name="ex_nu_trung" value="5">
+            <label for="q1e">5. <strong>Rất tương đồng</strong>: Ngữ điệu của hai đoạn âm thanh gần như giống nhau hoàn toàn. Mọi đặc điểm về âm điệu, tốc độ và cách nhấn mạnh từ đều tương tự nhau.</label><br>
+    </div>
+
+    <button type="submit">Submit</button>
+
+    </form>
+</body>
+</html>
