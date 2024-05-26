@@ -2,12 +2,15 @@ import os
 from flask import Flask, render_template, request
 from flask_cors import CORS, cross_origin
 from supabase import create_client, Client
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
 # Apply Flask CORS
 CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
+
+load_dotenv()
 
 url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_KEY")
