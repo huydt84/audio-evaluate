@@ -46,13 +46,13 @@ def submit():
     gen_nu_trung = int(form["gen_nu_trung"])
     ex_nu_trung = int(form["ex_nu_trung"])
 
-    data = supabase.table('score') \
-                        .insert({"nam-bac-gt": gt_nam_bac, "nam-bac-gen": gen_nam_bac, "nam-bac-ex": ex_nam_bac,
-                                 "nam-nam-gt": gt_nam_nam, "nam-nam-gen": gen_nam_nam, "nam-nam-ex": ex_nam_nam,
-                                 "nu-bac-gt": gt_nu_bac, "nu-bac-gen": gen_nu_bac, "nu-bac-ex": ex_nu_bac,
-                                 "nu-nam-gt": gt_nu_nam, "nu-nam-gen": gen_nu_nam, "nu-nam-ex": ex_nu_nam,
-                                 "nu-trung-gt": gt_nu_trung, "nu-trung-gen": gen_nu_trung, "nu-trung-ex": ex_nu_trung}) \
-                        .execute()
+    supabase.table('score') \
+        .insert({"nam-bac-gt": gt_nam_bac, "nam-bac-gen": gen_nam_bac, "nam-bac-ex": ex_nam_bac,
+                    "nam-nam-gt": gt_nam_nam, "nam-nam-gen": gen_nam_nam, "nam-nam-ex": ex_nam_nam,
+                    "nu-bac-gt": gt_nu_bac, "nu-bac-gen": gen_nu_bac, "nu-bac-ex": ex_nu_bac,
+                    "nu-nam-gt": gt_nu_nam, "nu-nam-gen": gen_nu_nam, "nu-nam-ex": ex_nu_nam,
+                    "nu-trung-gt": gt_nu_trung, "nu-trung-gen": gen_nu_trung, "nu-trung-ex": ex_nu_trung}) \
+        .execute()
     
     return render_template("after.html")
 
